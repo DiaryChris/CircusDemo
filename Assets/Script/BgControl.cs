@@ -2,29 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BgControl : MonoBehaviour {
+public class BgControl : MonoBehaviour
+{
 
-    private float offset = 0;
+    public float Offset = 0;
+    public float MoveSpeed = 1.8f;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
-    public void Move(float dir)
+    // Use this for initialization
+    void Start()
     {
-        if(dir == 1)
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    //背景移动函数
+    public bool Move(float dir)
+    {
+        if (dir > 0)
         {
-            GetComponent<Renderer>().material.SetTextureOffset("MainTexture", new Vector2(offset += 0.4f * Time.deltaTime, 0));
+            Offset += MoveSpeed * 0.15f * Time.deltaTime;
+            GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(Offset, 0));
+            return true;
         }
-        else
+        if (dir < 0)
         {
-            GetComponent<Renderer>().material.SetTextureOffset("MainTexture", new Vector2(offset -= 0.4f * Time.deltaTime, 0));
+            if (Offset == 0)
+            {
+                return false;
+            }
+            Offset -= MoveSpeed * 0.15f * Time.deltaTime;
+            if(Offset < 0)
+            {
+                Offset = 0;
+            }
+            GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(Offset, 0));
+            return true;
         }
+        return false;
     }
 }
