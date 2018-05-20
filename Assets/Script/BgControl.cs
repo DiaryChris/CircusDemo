@@ -23,11 +23,13 @@ public class BgControl : MonoBehaviour
     //背景移动函数
     public bool Move(float dir)
     {
+        if (dir == 0)
+        {
+            return false;
+        }
         if (dir > 0)
         {
             Offset += MoveSpeed * 0.15f * Time.deltaTime;
-            GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(Offset, 0));
-            return true;
         }
         if (dir < 0)
         {
@@ -36,13 +38,12 @@ public class BgControl : MonoBehaviour
                 return false;
             }
             Offset -= MoveSpeed * 0.15f * Time.deltaTime;
-            if(Offset < 0)
+            if (Offset < 0)
             {
                 Offset = 0;
             }
-            GetComponent<Renderer>().material.SetTextureOffset("_MainTex", new Vector2(Offset, 0));
-            return true;
         }
-        return false;
+        GetComponent<Renderer>().material.mainTextureOffset = new Vector2(Offset, 0);
+        return true;
     }
 }

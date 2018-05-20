@@ -10,7 +10,6 @@ public class FireManager : MonoBehaviour
 
 
     private PlayerControl pc;
-    private BgControl bc;
 
     private float interval;
 
@@ -18,8 +17,6 @@ public class FireManager : MonoBehaviour
     void Start()
     {
         pc = GameObject.FindWithTag("Player").GetComponent<PlayerControl>();
-        bc = GameObject.FindWithTag("Background").GetComponent<BgControl>();
-
     }
 
     // Update is called once per frame

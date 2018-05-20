@@ -49,8 +49,11 @@ public class PlayerControl : MonoBehaviour
         {
             rBody.AddForce(Vector2.up * 300);
             AudioManager.Instance.PlayJump();
+            ani.SetBool("IsJump", true);
+            isGround = false;
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "Ground")
@@ -60,14 +63,15 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.tag == "Ground")
-        {
-            isGround = false;
-            ani.SetBool("IsJump", true);
-        }
-    }
+    //private void OnCollisionExit2D(Collision2D collision)
+    //{
+    //    if (collision.collider.tag == "Ground")
+    //    {
+    //        Debug.Log(2);
+    //        isGround = false;
+    //        ani.SetBool("IsJump", true);
+    //    }
+    //}
 
     private void OnTriggerEnter2D()
     {
