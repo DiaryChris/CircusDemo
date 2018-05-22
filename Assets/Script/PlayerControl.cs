@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerControl : MonoBehaviour
 {
@@ -8,7 +10,8 @@ public class PlayerControl : MonoBehaviour
     public int Hp = 1;
     public float Horizontal;
     public bool IsKeyUp;
-    public BgControl BgControl;
+
+    private BgControl bc;
 
     private Animator ani;
     private Rigidbody2D rBody;
@@ -19,6 +22,8 @@ public class PlayerControl : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        bc = GameObject.FindWithTag("Background").GetComponent<BgControl>();
+
         ani = GetComponent<Animator>();
         rBody = GetComponent<Rigidbody2D>();
     }
@@ -28,6 +33,7 @@ public class PlayerControl : MonoBehaviour
     {
         if (Hp <= 0)
         {
+            Invoke("EndGame", 5f);
             return;
         }
 
@@ -35,7 +41,7 @@ public class PlayerControl : MonoBehaviour
         IsKeyUp = Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow);
 
         //水平按键且成功Move则播放Run动画
-        if (Horizontal != 0 && BgControl.Move(Horizontal))
+        if (Horizontal != 0 && bc.Move(Horizontal))
         {
             ani.SetBool("IsRun", true);
         }
@@ -63,21 +69,16 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    //private void OnCollisionExit2D(Collision2D collision)
-    //{
-    //    if (collision.collider.tag == "Ground")
-    //    {
-    //        Debug.Log(2);
-    //        isGround = false;
-    //        ani.SetBool("IsJump", true);
-    //    }
-    //}
-
     private void OnTriggerEnter2D()
     {
         Hp--;
         Destroy(rBody);
         ani.SetBool("IsDie", true);
         AudioManager.Instance.PlayCrash();
+    }
+
+    public void EndGame()
+    {
+        SceneManager.LoadScene("GameEnd", LoadSceneMode.Single);
     }
 }

@@ -29,7 +29,7 @@ public class BgControl : MonoBehaviour
         }
         if (dir > 0)
         {
-            Offset += MoveSpeed * 0.15f * Time.deltaTime;
+            Offset += MoveSpeed * 0.125f * Time.deltaTime;
         }
         if (dir < 0)
         {
@@ -37,7 +37,7 @@ public class BgControl : MonoBehaviour
             {
                 return false;
             }
-            Offset -= MoveSpeed * 0.15f * Time.deltaTime;
+            Offset -= MoveSpeed * 0.125f * Time.deltaTime;
             if (Offset < 0)
             {
                 Offset = 0;

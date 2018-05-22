@@ -154,7 +154,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -441,6 +441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireBig: {fileID: 1128320556524272, guid: 8df2da3656427664fa94d119f5be5efc, type: 2}
+  FireDouble: {fileID: 1698271274052868, guid: ba93c823c8d63cd4cadeda18712761cd, type: 2}
+  FireSmall: {fileID: 1951170258775800, guid: cead93c17cd4afc48a2ea3c88e2c2c77, type: 2}
 --- !u!4 &575519055
 Transform:
   m_ObjectHideFlags: 0
@@ -738,6 +740,7 @@ MonoBehaviour:
   Jump: {fileID: 8300000, guid: a9a7339874cec244c908374915ca727f, type: 3}
   Crash: {fileID: 8300000, guid: 4f0af6f3bd1a6d2418a14199d9815227, type: 3}
   Die: {fileID: 8300000, guid: 75e7168095aa4c54ebbd1d3b421c97f2, type: 3}
+  Begin: {fileID: 8300000, guid: d16d013cb47681e48ba8599b4b260d96, type: 3}
 --- !u!1 &1497736703
 GameObject:
   m_ObjectHideFlags: 0
@@ -898,7 +901,47 @@ MonoBehaviour:
   Hp: 1
   Horizontal: 0
   IsKeyUp: 0
-  BgControl: {fileID: 611763409}
+--- !u!1 &1510422893
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1510422894}
+  - component: {fileID: 1510422895}
+  m_Layer: 0
+  m_Name: FirePotManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1510422894
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510422893}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 4.5, y: -1.45, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1510422895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1510422893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8da922004708beb47b64ece89af6894b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FirePot: {fileID: 1440044092692624, guid: cd2560a1a117bce409c55eccd5089276, type: 2}
 --- !u!1 &1608357883
 GameObject:
   m_ObjectHideFlags: 0
