@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour
     private Rigidbody2D rBody;
 
     private bool isGround = true;
+    private bool isWin = false;
 
 
     // Use this for initialization
@@ -32,6 +33,11 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         if (Hp <= 0)
+        {
+            Invoke("EndGame", 5f);
+            return;
+        }
+        if (isWin)
         {
             Invoke("EndGame", 5f);
             return;
@@ -67,14 +73,24 @@ public class PlayerControl : MonoBehaviour
             isGround = true;
             ani.SetBool("IsJump", false);
         }
+        if (collision.collider.tag == "Win")
+        {
+            isGround = true;
+            isWin = true;
+            ani.SetBool("IsJump", false);
+            ani.SetBool("IsWin", true);
+        }
     }
 
-    private void OnTriggerEnter2D()
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        Hp--;
-        Destroy(rBody);
-        ani.SetBool("IsDie", true);
-        AudioManager.Instance.PlayCrash();
+        if (collider.tag == "Fire")
+        {
+            Hp--;
+            Destroy(rBody);
+            ani.SetBool("IsDie", true);
+            AudioManager.Instance.PlayCrash();
+        }
     }
 
     public void EndGame()

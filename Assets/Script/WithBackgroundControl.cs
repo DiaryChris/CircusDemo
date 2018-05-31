@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirePotControl : MonoBehaviour
+public class WithBackgroundControl : MonoBehaviour
 {
     private GameObject bg;
     private BgControl bc;

@@ -55,11 +55,12 @@
      <Compile Include="Assets\Script\BgControl.cs" />
      <Compile Include="Assets\Script\FireControl.cs" />
      <Compile Include="Assets\Script\FireManager.cs" />
-     <Compile Include="Assets\Script\FirePotControl.cs" />
      <Compile Include="Assets\Script\FirePotManager.cs" />
      <Compile Include="Assets\Script\GameEnd.cs" />
      <Compile Include="Assets\Script\GameStart.cs" />
+     <Compile Include="Assets\Script\NumberPadManager.cs" />
      <Compile Include="Assets\Script\PlayerControl.cs" />
+     <Compile Include="Assets\Script\WithBackgroundControl.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
